@@ -1,3 +1,5 @@
+// Replace Your api key with your Erlc api key
+
 const API_KEY = "Your api Key"
 
 const req = new Request("https://api.erlc.gg/v2/server");
