@@ -1,6 +1,7 @@
-// Replace Your api key with your Erlc api key
+// Ersetze Dein API Key mit deinem ERLC Api Key
 
-const API_KEY = "Your api Key"
+const API_KEY = "Dein API Key "
+
 
 const req = new Request("https://api.erlc.gg/v2/server");
 req.headers = { "server-key": API_KEY };
@@ -12,14 +13,16 @@ try {
 } catch {
   data = {};
 }
-
+const joinKey = data.JoinKey ?? "";
 const players = data.CurrentPlayers ?? 0;
 const maxPlayers = data.MaxPlayers ?? 40;
 const serverName = data.Name ?? "ERLC Server";
 const percentage = Math.min(players / maxPlayers, 1);
 
 const widget = new ListWidget();
-
+if (joinKey) {
+  widget.url = `https://erlc.gg/join?code=${joinKey}&placeId=2534724415`;
+}
 const gradient = new LinearGradient();
 gradient.colors = [
   new Color("#0f172a"),
